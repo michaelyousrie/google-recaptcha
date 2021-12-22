@@ -4,12 +4,20 @@ namespace Michael\GoogleRecaptcha\Middlewares;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProtectedByGoogleRecaptcha
 {
     public function handle(Request $request, Closure $next)
     {
-        //TODO: implement calling google.
+        if (
+            empty($request->get('google_recaptcha_token')) or
+            $this->verifyRecaptcha($request->get('google_recaptcha_token'))->success != true
+        ) {
+            Log::error("Recaptcha Failed.");
+
+            return redirect()->back();
+        }
 
         return $next($request);
     }
