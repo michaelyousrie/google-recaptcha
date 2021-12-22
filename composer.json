@@ -1,0 +1,26 @@
+{
+    "name": "michaelyousrie/google-recaptcha",
+    "autoload": {
+        "psr-4": {
+            "Michael\\GoogleRecaptcha\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael",
+            "email": "michaelyousrie@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^7.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Michael\\GoogleRecaptcha\\GoogleRecaptchaServiceProvider"
+            ]
+        }
+    }
+}
